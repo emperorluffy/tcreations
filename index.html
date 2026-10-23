@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T's Creations | Handcrafted Coloring Books for Kids & Adults</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <p><i class="fa-solid fa-sparkles"></i> Welcome to <strong>T's Creations</strong>! Free delivery across Kenya for orders over Ksh 2,500!</p>
+            <div class="currency-toggle">
+                <span>Currency:</span>
+                <button id="curr-ksh" class="curr-btn active" onclick="switchCurrency('KSH')">KSh</button>
+                <button id="curr-usd" class="curr-btn" onclick="switchCurrency('USD')">USD ($)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon"><i class="fa-solid fa-palette"></i></div>
+                <div class="logo-text">
+                    <span class="brand-name">T's Creations</span>
+                    <span class="brand-tagline">Coloring Books & Art Supplies</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#offers"><i class="fa-solid fa-tag"></i> Special Offers</a>
+                <a href="#shop"><i class="fa-solid fa-book-open"></i> Shop Books</a>
+                <a href="#studio"><i class="fa-solid fa-paintbrush"></i> Interactive Studio</a>
+                <a href="#reviews"><i class="fa-solid fa-star"></i> Reviews</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn-admin" onclick="toggleAdminModal()" title="Manage Offers (Admin)">
+                    <i class="fa-solid fa-gear"></i> Manage Offers
+                </button>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="hero-badge"><i class="fa-solid fa-heart"></i> Cozy & Mindful Coloring</span>
+                <h1>Hand-Drawn Books That Bring Joy to Kids & Adults</h1>
+                <p>Discover cute cozy scenes, intricate botanical mandalas, stress-relief patterns, and vibrant local cultural heritage books designed to spark creativity.</p>
+                <div class="hero-cta-group">
+                    <a href="#shop" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Explore Books</a>
+                    <a href="#studio" class="btn btn-outline"><i class="fa-solid fa-hand-pointer"></i> Try Online Studio</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <strong>50,000+</strong>
+                        <span>Copies Sold</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>4.9 <i class="fa-solid fa-star" style="color: #f59e0b;"></i></strong>
+                        <span>Customer Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <strong>100%</strong>
+                        <span>Hand-Drawn Lineart</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-wrap">
+                <div class="hero-card-stack">
+                    <div class="hero-img-card card-1">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80" alt="Cozy Coloring">
+                        <span>Cozy Corner Series</span>
+                    </div>
+                    <div class="hero-img-card card-2">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="African Heritage">
+                        <span>Market & Cultural Series</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Dynamic Offers Banner -->
+    <section class="offers-section" id="offers">
+        <div class="container">
+            <div class="offers-header">
+                <h2><i class="fa-solid fa-fire"></i> Exclusive Offers & Deals</h2>
+                <p>Updated in real-time. Use these offer codes at checkout for discounts!</p>
+            </div>
+            <div class="offers-grid" id="offersContainer">
+                <!-- Dynamically Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop & Catalog Section -->
+    <section class="shop-section" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Coloring Book Collection</h2>
+                <p>Browse hand-crafted physical coloring books printed on premium 160gsm bleed-proof paper.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterCategory('all

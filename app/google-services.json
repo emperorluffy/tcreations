@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1813481327",
+    "project_id": "com-example-tcreations-6b237",
+    "storage_bucket": "com-example-tcreations-6b237.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1813481327:android:e34f57d71564042f5c0a9a",
+        "android_client_info": {
+          "package_name": "com.example.tcreations"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg88oLLZjcW2dGPJuz75mJi9CoDCcgyG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
