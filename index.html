@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T's Creations | Handcrafted Coloring Books for Kids & Adults</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>T's Creations | Handcrafted Coloring Books & Interactive Studio</title>
     <!-- Google Fonts & Font Awesome Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +13,16 @@
 </head>
 <body>
 
-    <!-- Announcement Bar -->
+    <!-- Announcement Bar with Automatic Geolocation Badge -->
     <div class="announcement-bar">
         <div class="container announcement-content">
-            <p><i class="fa-solid fa-sparkles"></i> Welcome to <strong>T's Creations</strong>! Free delivery across Kenya for orders over Ksh 2,500!</p>
-            <div class="currency-toggle">
-                <span>Currency:</span>
-                <button id="curr-ksh" class="curr-btn active" onclick="switchCurrency('KSH')">KSh</button>
-                <button id="curr-usd" class="curr-btn" onclick="switchCurrency('USD')">USD ($)</button>
+            <p id="announcementText"><i class="fa-solid fa-sparkles"></i> Welcome to <strong>T's Creations</strong>! Handcrafted coloring books & digital stories.</p>
+
+            <div class="regional-settings-group">
+                <!-- Automatic Geolocation Badge (No manual controls, 100% geolocation auto-filled) -->
+                <span class="geo-location-badge">
+                    <i class="fa-solid fa-location-dot"></i> <span id="geoDetectedText">Detecting Location...</span>
+                </span>
             </div>
         </div>
     </div>
@@ -32,20 +34,25 @@
                 <div class="logo-icon"><i class="fa-solid fa-palette"></i></div>
                 <div class="logo-text">
                     <span class="brand-name">T's Creations</span>
-                    <span class="brand-tagline">Coloring Books & Art Supplies</span>
+                    <span class="brand-tagline" id="brandTagline">Coloring Books & Digital Art Studio</span>
                 </div>
             </a>
 
+            <!-- Mobile Navigation Menu Button -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
             <nav class="nav-links" id="navLinks">
-                <a href="#offers"><i class="fa-solid fa-tag"></i> Special Offers</a>
-                <a href="#shop"><i class="fa-solid fa-book-open"></i> Shop Books</a>
-                <a href="#studio"><i class="fa-solid fa-paintbrush"></i> Interactive Studio</a>
-                <a href="#reviews"><i class="fa-solid fa-star"></i> Reviews</a>
+                <a href="#offers" id="navOffers" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-tag"></i> Special Offers</a>
+                <a href="#shop" id="navShop" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-book-open"></i> Shop Books</a>
+                <a href="#studio" class="active-link" id="navStudio" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-paintbrush"></i> Online Studio</a>
+                <a href="#reviews" id="navReviews" onclick="toggleMobileMenu(false)"><i class="fa-solid fa-star"></i> Reviews</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="btn-admin" onclick="toggleAdminModal()" title="Manage Offers (Admin)">
-                    <i class="fa-solid fa-gear"></i> Manage Offers
+                    <i class="fa-solid fa-gear"></i> <span id="adminOffersBtnText">Offers Admin</span>
                 </button>
                 <button class="cart-btn" onclick="toggleCart()">
                     <i class="fa-solid fa-bag-shopping"></i>
@@ -60,36 +67,36 @@
         <div class="container hero-grid">
             <div class="hero-text">
                 <span class="hero-badge"><i class="fa-solid fa-heart"></i> Cozy & Mindful Coloring</span>
-                <h1>Hand-Drawn Books That Bring Joy to Kids & Adults</h1>
-                <p>Discover cute cozy scenes, intricate botanical mandalas, stress-relief patterns, and vibrant local cultural heritage books designed to spark creativity.</p>
+                <h1 id="heroHeading">Hand-Drawn Books That Bring Joy to Kids & Adults</h1>
+                <p id="heroSubtext">Discover cute cozy scenes, African Rituals, intricate botanical mandalas, stress-relief patterns, and vibrant local cultural heritage books designed to spark creativity.</p>
                 <div class="hero-cta-group">
-                    <a href="#shop" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Explore Books</a>
-                    <a href="#studio" class="btn btn-outline"><i class="fa-solid fa-hand-pointer"></i> Try Online Studio</a>
+                    <a href="#shop" class="btn btn-primary" id="btnExploreBooks"><i class="fa-solid fa-cart-shopping"></i> Explore Books</a>
+                    <a href="#studio" class="btn btn-outline" id="btnTryStudio"><i class="fa-solid fa-hand-pointer"></i> Try Online Studio</a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <strong>50,000+</strong>
-                        <span>Copies Sold</span>
+                        <span id="statCopiesSold">Copies Sold</span>
                     </div>
                     <div class="stat-item">
                         <strong>4.9 <i class="fa-solid fa-star" style="color: #f59e0b;"></i></strong>
-                        <span>Customer Rating</span>
+                        <span id="statRating">Customer Rating</span>
                     </div>
                     <div class="stat-item">
                         <strong>100%</strong>
-                        <span>Hand-Drawn Lineart</span>
+                        <span id="statLineart">Hand-Drawn Lineart</span>
                     </div>
                 </div>
             </div>
             <div class="hero-image-wrap">
                 <div class="hero-card-stack">
                     <div class="hero-img-card card-1">
-                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80" alt="Cozy Coloring">
-                        <span>Cozy Corner Series</span>
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=600&q=80" alt="Luxury Atelier">
+                        <span>Luxury Atelier Series</span>
                     </div>
                     <div class="hero-img-card card-2">
-                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="African Heritage">
-                        <span>Market & Cultural Series</span>
+                        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80" alt="African Rituals">
+                        <span>African Rituals Series</span>
                     </div>
                 </div>
             </div>
@@ -100,11 +107,138 @@
     <section class="offers-section" id="offers">
         <div class="container">
             <div class="offers-header">
-                <h2><i class="fa-solid fa-fire"></i> Exclusive Offers & Deals</h2>
-                <p>Updated in real-time. Use these offer codes at checkout for discounts!</p>
+                <h2 id="offersHeading"><i class="fa-solid fa-fire"></i> Exclusive Offers & Deals</h2>
+                <p id="offersSubtext">Updated in real-time. Use these offer codes at checkout for discounts!</p>
             </div>
             <div class="offers-grid" id="offersContainer">
                 <!-- Dynamically Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Online Studio Section -->
+    <section class="studio-section" id="studio">
+        <div class="container">
+            <div class="section-title">
+                <span class="studio-badge"><i class="fa-solid fa-tablet-screen-button"></i> Mobile & Tablet Ready</span>
+                <h2 id="studioHeading">Try Online Coloring Studio</h2>
+                <p id="studioSubtext">Color right in your browser on phone, tablet, stylus, or desktop! Tap bounded areas to flood fill or draw freehand.</p>
+            </div>
+
+            <div class="studio-layout">
+                <!-- Sidebar: Category Selector & Get a Story -->
+                <aside class="studio-sidebar">
+                    <h3><i class="fa-solid fa-layer-group"></i> <span id="sidebarThemeTitle">Select Theme</span></h3>
+                    <div class="template-list" id="templateList">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <!-- Get a Story Order Card -->
+                    <div class="get-story-card">
+                        <div class="story-card-header">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                            <h3 id="storyCardTitle">Get a Custom Story</h3>
+                        </div>
+                        <p class="story-desc" id="storyCardDesc">Order custom story coloring pages! Ultra-affordable pricing per story catalogue & length.</p>
+
+                        <div class="form-group">
+                            <label for="storyGenre"><i class="fa-solid fa-masks-theater"></i> <span id="storyGenreLabel">Story Catalogue:</span></label>
+                            <select id="storyGenre" onchange="calculateStoryPrice()">
+                                <option value="gothic">🗝️ Gothic</option>
+                                <option value="horror">👻 Horror</option>
+                                <option value="romance">💖 Romance</option>
+                                <option value="superheroes">⚡ Superheroes</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="storyLength"><i class="fa-solid fa-file-lines"></i> <span id="storyLengthLabel">Story Length:</span></label>
+                            <select id="storyLength" onchange="calculateStoryPrice()">
+                                <option value="5" id="optStory5">Short Story (5 Pages)</option>
+                                <option value="10" selected id="optStory10">Medium Tale (10 Pages)</option>
+                                <option value="20" id="optStory20">Full Storybook (20 Pages)</option>
+                            </select>
+                        </div>
+
+                        <div class="story-price-box">
+                            <span id="lblTotalPrice">Total Price:</span>
+                            <strong id="storyPriceDisplay">Ksh 36</strong>
+                        </div>
+
+                        <button class="btn btn-primary add-story-btn" onclick="addStoryToCart()">
+                            <i class="fa-solid fa-cart-plus"></i> <span id="btnAddStoryText">Add Story to Cart</span>
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Canvas & Unified Tool Dashboard -->
+                <main class="studio-workspace">
+                    <!-- Unified Studio Control Dashboard -->
+                    <div class="studio-control-dashboard">
+
+                        <!-- Dashboard Row 1: Tool Modes, Size Slider & Actions -->
+                        <div class="dashboard-row-tools">
+                            <!-- Tool Mode Selector -->
+                            <div class="tool-segment-group">
+                                <button id="tool-fill" class="segment-btn active" onclick="setTool('fill')" title="Tap bounded section to fill color">
+                                    <i class="fa-solid fa-fill-drip"></i> <span id="lblFillBucket">Fill Bucket</span>
+                                </button>
+                                <button id="tool-brush" class="segment-btn" onclick="setTool('brush')" title="Draw freehand brush stroke">
+                                    <i class="fa-solid fa-paint-brush"></i> <span id="lblBrush">Brush</span>
+                                </button>
+                                <button id="tool-eraser" class="segment-btn" onclick="setTool('eraser')" title="Erase strokes">
+                                    <i class="fa-solid fa-eraser"></i> <span id="lblEraser">Eraser</span>
+                                </button>
+                            </div>
+
+                            <!-- Brush Size Slider -->
+                            <div class="size-slider-box">
+                                <label for="brushSize"><i class="fa-solid fa-circle-dot"></i> <span id="lblSize">Size:</span></label>
+                                <input type="range" id="brushSize" min="3" max="50" value="12">
+                                <span id="brushSizeVal" class="size-badge">12px</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="dashboard-actions">
+                                <button class="dash-btn" onclick="undoCanvas()" title="Undo last action">
+                                    <i class="fa-solid fa-rotate-left"></i> <span id="lblUndo">Undo</span>
+                                </button>
+                                <button class="dash-btn" onclick="resetCanvas()" title="Reset canvas">
+                                    <i class="fa-solid fa-trash-can"></i> <span id="lblReset">Reset</span>
+                                </button>
+                                <button class="dash-btn dash-btn-save" onclick="downloadCanvas()" title="Download image">
+                                    <i class="fa-solid fa-download"></i> <span id="lblSaveArt">Save Art</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Row 2: Picture Slide Carousel Navigator -->
+                        <div class="dashboard-row-carousel" id="studioPageBar">
+                            <!-- Rendered by JS -->
+                        </div>
+
+                        <!-- Dashboard Row 3: Color Selection Palette Bar -->
+                        <div class="dashboard-row-palette">
+                            <span class="palette-label"><i class="fa-solid fa-palette"></i> <span id="lblPalette">Palette:</span></span>
+                            <div class="quick-swatches-list" id="quickSwatchesList">
+                                <!-- Swatches rendered by JS -->
+                            </div>
+                            <div class="custom-picker-wrap">
+                                <label for="quickColorPickerInput" title="Choose custom color">
+                                    <i class="fa-solid fa-eye-dropper"></i> <span id="lblCustomColor">Custom</span>
+                                </label>
+                                <input type="color" id="quickColorPickerInput" value="#E76F51" onchange="selectCustomColor(this.value)">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Interactive Canvas Container (Pristine Lineart, No Text Overlaid Inside Canvas) -->
+                    <div class="canvas-container" id="canvasContainer">
+                        <canvas id="coloringCanvas" width="600" height="600"></canvas>
+                    </div>
+
+                </main>
             </div>
         </div>
     </section>
@@ -113,10 +247,193 @@
     <section class="shop-section" id="shop">
         <div class="container">
             <div class="section-title">
-                <h2>Our Coloring Book Collection</h2>
-                <p>Browse hand-crafted physical coloring books printed on premium 160gsm bleed-proof paper.</p>
+                <h2 id="shopHeading">Our Coloring Book Collection</h2>
+                <p id="shopSubtext">Browse hand-crafted physical coloring books printed on premium 160gsm bleed-proof paper.</p>
             </div>
 
             <!-- Filter Controls -->
             <div class="filter-bar">
-                <button class="filter-btn active" onclick="filterCategory('all
+                <button class="filter-btn active" onclick="filterCategory('all', this)" id="filterAll">All Books</button>
+                <button class="filter-btn" onclick="filterCategory('cozy', this)" id="filterCozy">Luxury & Cozy</button>
+                <button class="filter-btn" onclick="filterCategory('heritage', this)" id="filterHeritage">African Rituals</button>
+                <button class="filter-btn" onclick="filterCategory('mandala', this)" id="filterMandala">Mandalas & Therapy</button>
+                <button class="filter-btn" onclick="filterCategory('kids', this)" id="filterKids">Kids Editions</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Dynamically Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="reviewsHeading">Loved By Colorists Everywhere</h2>
+                <p id="reviewsSubtext">Read what our happy customers say about T's Creations.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"The African Rituals collection is incredible! Authentic cultural art and beautiful mask line art."</p>
+                    <strong>— Amani M. (Nairobi)</strong>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Super affordable! 5 different pictures for every theme! My kids colored all 5 lion pages."</p>
+                    <strong>— Sarah K. (Mombasa)</strong>
+                </div>
+                <div class="review-card">
+                    <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Luxury Atelier series gives me complete relaxation after work. Only €0.85 for custom digital copies!"</p>
+                    <strong>— Elena R. (Berlin, Germany)</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-bag-shopping"></i> <span id="lblYourCart">Your Cart</span></h3>
+            <button class="close-cart-btn" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartItemsContainer">
+            <!-- Dynamically populated -->
+        </div>
+        <div class="cart-footer">
+            <div class="coupon-box">
+                <input type="text" id="couponInput" placeholder="Offer Code (e.g. COZY20)">
+                <button onclick="applyCoupon()" id="btnApplyCoupon">Apply</button>
+            </div>
+            <div id="discountMsg" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;"></div>
+            <div class="summary-line">
+                <span id="lblSubtotal">Subtotal:</span>
+                <span id="cartSubtotal">Ksh 0</span>
+            </div>
+            <div class="summary-line total-line">
+                <span id="lblTotal">Total:</span>
+                <span id="cartTotal">Ksh 0</span>
+            </div>
+            <button class="btn btn-primary checkout-btn" onclick="openCheckoutModal()"><i class="fa-solid fa-shield-halved"></i> <span id="btnCheckoutText">Proceed to Checkout</span></button>
+        </div>
+    </div>
+
+    <!-- Payment Gateway Modal -->
+    <div class="checkout-modal-overlay" id="checkoutModalOverlay" style="display: none;">
+        <div class="checkout-modal">
+            <div class="checkout-modal-header">
+                <h3><i class="fa-solid fa-shield-halved"></i> Payment Gateway</h3>
+                <button onclick="closeCheckoutModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="checkout-modal-body">
+                <div class="payment-tabs">
+                    <button class="payment-tab active" id="tabMpesa" onclick="switchPaymentTab('mpesa')">
+                        <i class="fa-solid fa-mobile-screen-button"></i> M-Pesa Express (Kenya)
+                    </button>
+                    <button class="payment-tab" id="tabCard" onclick="switchPaymentTab('card')">
+                        <i class="fa-solid fa-credit-card"></i> Card / SEPA / Local
+                    </button>
+                </div>
+
+                <!-- M-Pesa Daraja STK Push View -->
+                <div class="payment-view" id="viewMpesa">
+                    <div class="mpesa-badge">
+                        <i class="fa-solid fa-circle-check"></i> Safaricom M-Pesa Daraja API
+                    </div>
+                    <p class="payment-instructions">Enter your Safaricom mobile number to receive an instant M-Pesa STK Push PIN prompt on your phone.</p>
+
+                    <div class="form-group margin-v">
+                        <label for="mpesaPhone"><i class="fa-solid fa-phone"></i> M-Pesa Phone Number:</label>
+                        <input type="text" id="mpesaPhone" value="254712345678" placeholder="e.g. 254712345678">
+                    </div>
+
+                    <div class="checkout-amount-banner">
+                        <span>Amount to Pay:</span>
+                        <strong id="mpesaCheckoutAmount">Ksh 0</strong>
+                    </div>
+
+                    <button class="btn btn-primary mpesa-pay-btn" onclick="initiateMpesaStkPush()">
+                        <i class="fa-solid fa-paper-plane"></i> Send M-Pesa STK Push
+                    </button>
+
+                    <div id="mpesaStatusBox" class="stk-status-box" style="display:none;"></div>
+                </div>
+
+                <!-- Card / SEPA View -->
+                <div class="payment-view" id="viewCard" style="display: none;">
+                    <div class="mpesa-badge card-badge">
+                        <i class="fa-solid fa-lock"></i> Visa / Mastercard / Local Gateway
+                    </div>
+                    <p class="payment-instructions">Secure payment processed via encrypted Stripe / SEPA / Local Bank gateway.</p>
+
+                    <div class="form-group margin-v">
+                        <label for="cardName">Cardholder Name:</label>
+                        <input type="text" id="cardName" placeholder="e.g. Maria Rossi">
+                    </div>
+
+                    <div class="form-group margin-v">
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" placeholder="4000 1234 5678 9010">
+                    </div>
+
+                    <div style="display:flex; gap:12px;">
+                        <div class="form-group" style="flex:1;">
+                            <label for="cardExpiry">Expiry:</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label for="cardCvc">CVC:</label>
+                            <input type="text" id="cardCvc" placeholder="123">
+                        </div>
+                    </div>
+
+                    <div class="checkout-amount-banner" style="margin-top: 14px;">
+                        <span>Amount to Pay:</span>
+                        <strong id="cardCheckoutAmount">€0.00</strong>
+                    </div>
+
+                    <button class="btn btn-primary mpesa-pay-btn" onclick="processCardPayment()">
+                        <i class="fa-solid fa-lock"></i> Complete Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Offer Management Modal -->
+    <div class="admin-modal-overlay" id="adminModalOverlay" style="display: none;">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <h3><i class="fa-solid fa-gear"></i> Offers & Discount Manager</h3>
+                <button onclick="toggleAdminModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="admin-modal-body">
+                <form id="offerForm" onsubmit="handleCreateOffer(event)">
+                    <h4>Create New Dynamic Offer</h4>
+                    <input type="text" id="offerTitle" placeholder="Offer Title (e.g. Easter Special)" required>
+                    <input type="text" id="offerCode" placeholder="Discount Code (e.g. EASTER25)" required>
+                    <input type="number" id="offerDiscount" placeholder="Discount %" min="1" max="100" required>
+                    <input type="text" id="offerDesc" placeholder="Description" required>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Add Offer</button>
+                </form>
+                <hr style="margin: 20px 0; border: none; border-top: 1px solid var(--border-color);">
+                <h4>Active Offers</h4>
+                <div id="adminOfferList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2025 T's Creations. All rights reserved. Handcrafted coloring books & digital story pages.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="main.js"></script>
+</body>
+</html>
